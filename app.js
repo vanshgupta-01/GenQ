@@ -264,10 +264,64 @@ function startReportsListener(uid) {
       // Re-render dashboard stats if we are on dashboard home
       if (AppState.currentDashboardSection === 'dashboard-home') {
         const statsEl = document.getElementById('dashboard-stats-content');
-        if (statsEl) statsEl.innerHTML = renderDashboardStats();
+        if (statsEl) {
+          statsEl.innerHTML = renderDashboardStats();
+        }
       }
     }, (error) => {
       console.error("Error fetching reports: ", error);
+    });
+}
+
+// ─── Automated Email System ──────────────────────────────────
+
+/**
+ * Determines the officer's email based on the report category or location.
+ * In a real app, this would query a database of regional officers.
+ */
+function determineOfficerEmail(report) {
+  // TODO: Replace with the actual officer emails, or your own testing email
+  return "YOUR_TESTING_EMAIL@gmail.com"; 
+}
+
+/**
+ * Sends an automated email to the concerned officer using EmailJS.
+ */
+function sendOfficerEmail(report) {
+  if (typeof emailjs === 'undefined') {
+    console.warn("EmailJS is not loaded.");
+    return;
+  }
+
+  const officerEmail = determineOfficerEmail(report);
+  const imageUrl = (report.images && report.images.length > 0) ? report.images[0] : "No image provided";
+
+  const templateParams = {
+    to_email: officerEmail,
+    officer_name: "Concerned Officer",
+    category: report.category,
+    severity: report.severity,
+    address: report.location.address || "Unknown Location",
+    description: report.description,
+    image_link: imageUrl,
+    report_date: new Date().toLocaleString()
+  };
+
+  // TODO: Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID with actual values from EmailJS dashboard
+  const serviceID = "YOUR_SERVICE_ID"; 
+  const templateID = "YOUR_TEMPLATE_ID";
+
+  if (serviceID === "YOUR_SERVICE_ID" || templateID === "YOUR_TEMPLATE_ID") {
+    console.warn("EmailJS Service ID or Template ID not configured. Skipping automated email.");
+    return;
+  }
+
+  emailjs.send(serviceID, templateID, templateParams)
+    .then(function(response) {
+       console.log('Automated email sent to officer successfully!', response.status, response.text);
+       showToast('Concerned officer has been notified via email.', 'success');
+    }, function(error) {
+       console.error('Failed to send automated email...', error);
     });
 }
 
@@ -1771,6 +1825,10 @@ async function runAIVerification(modal) {
       };
 
       await db.collection('reports').add(newReport);
+      
+      // Fire automated email via EmailJS
+      sendOfficerEmail(newReport);
+
     } catch (error) {
       console.error("Failed to save report to Firebase:", error);
       // Fallback to local state if Firebase fails
@@ -1786,7 +1844,11 @@ async function runAIVerification(modal) {
         user: 'User',
       };
       AppState.reports.unshift(fallbackReport);
+      
+      // Fire automated email via EmailJS for fallback as well
+      sendOfficerEmail(fallbackReport);
     }
+
 
     showToast('Report submitted successfully!', 'success');
 
