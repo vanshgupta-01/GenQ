@@ -2174,8 +2174,7 @@ function handleLogout() {
 
 document.addEventListener('DOMContentLoaded', () => {
   try {
-    // Initialize mock data
-    initMockReports();
+    // Mock data removed based on user request
 
     // Set smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
