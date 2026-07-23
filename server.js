@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the current directory
 app.use(express.static(__dirname));
 
-// Send all other requests to index.html
-app.get('*', (req, res) => {
+// Send all other requests to index.html (Express 5 compatible fallback)
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
