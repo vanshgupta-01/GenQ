@@ -45,7 +45,7 @@ const translations = {
 };
 
 let currentLang = localStorage.getItem('genq_lang') || 'en';
-let currentTheme = localStorage.getItem('genq_theme') || 'dark';
+let currentTheme = localStorage.getItem('genq_theme') || 'light';
 
 function applyTheme(theme) {
   currentTheme = theme;
@@ -100,6 +100,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (langToggle) {
     langToggle.addEventListener('click', () => {
       applyLanguage(currentLang === 'en' ? 'hi' : 'en');
+    });
+  }
+
+  // Mouse Spotlight Effect on Feature Cards
+  const featureCards = document.querySelectorAll('.feature-card');
+  const featuresSection = document.getElementById('features');
+  if (featuresSection && featureCards.length > 0) {
+    featuresSection.addEventListener('mousemove', (e) => {
+      featureCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
     });
   }
 
