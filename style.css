@@ -450,8 +450,8 @@ button, input, select, textarea {
 
 .btn-signup {
   padding: 10px 24px;
-  background: linear-gradient(135deg, #5F8D7E, #5F8D7E);
-  border: none;
+  background: linear-gradient(135deg, #5F8D7E, #4A7064);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   color: white;
   font-weight: 500;
@@ -459,11 +459,12 @@ button, input, select, textarea {
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 12px rgba(95, 141, 126, 0.3);
 }
 
 .btn-signup:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 15px rgba(95, 141, 126, 0.4);
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 8px 24px rgba(95, 141, 126, 0.4);
 }
 
 /* Hamburger Menu Toggle */
@@ -1269,8 +1270,8 @@ button, input, select, textarea {
 .btn-submit {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(135deg, #5F8D7E, #5F8D7E);
-  border: none;
+  background: linear-gradient(135deg, #5F8D7E, #4A7064);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   color: white;
   font-weight: 600;
@@ -1282,11 +1283,12 @@ button, input, select, textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 6px 20px rgba(95, 141, 126, 0.4);
 }
 
 .btn-submit:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(95, 141, 126, 0.4);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 8px 28px rgba(95, 141, 126, 0.5);
 }
 
 .btn-submit.loading {
@@ -1910,20 +1912,21 @@ button, input, select, textarea {
 }
 
 .btn-next {
-  background: linear-gradient(135deg, #5F8D7E, #5F8D7E);
+  background: linear-gradient(135deg, #5F8D7E, #4A7064);
   padding: 12px 28px;
   border-radius: 10px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 12px rgba(95, 141, 126, 0.3);
 }
 
 .btn-next:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(95, 141, 126, 0.4);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 8px 20px rgba(95, 141, 126, 0.5);
 }
 
 /* ============================================================
