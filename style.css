@@ -1333,7 +1333,7 @@ button, input, select, textarea {
 #dashboard {
   display: flex;
   min-height: 100vh;
-  padding-top: 0;
+  padding-top: 96px;
   background-color: transparent;
 }
 
@@ -1342,15 +1342,16 @@ button, input, select, textarea {
   background: var(--surface);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
-  border-right: 1px solid var(--glass-border);
-  box-shadow: var(--glass-inset), 2px 0 16px rgba(15, 23, 42, 0.1);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inset), 0 8px 32px rgba(15, 23, 42, 0.1);
   padding: 20px 0 0 0;
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  top: 96px;
+  bottom: 24px;
+  left: 24px;
+  border-radius: 20px;
   z-index: 100;
   transition: transform 0.3s ease;
 }
@@ -1416,8 +1417,8 @@ button, input, select, textarea {
 /* Dashboard Main */
 .dashboard-main {
   flex: 1;
-  margin-left: 260px;
-  padding: 30px;
+  margin-left: 308px;
+  padding: 0 30px 30px 0;
 }
 
 .dashboard-topbar {

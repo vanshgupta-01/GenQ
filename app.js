@@ -486,10 +486,16 @@ function showPage(pageId) {
   // Scroll to top smoothly
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Toggle navbar visibility for dashboard
-  const navbar = document.querySelector('.navbar');
-  if (navbar) {
-    navbar.style.display = pageId === 'dashboard' ? 'none' : '';
+  // Toggle navbar buttons for dashboard
+  const navLogin = document.getElementById('navLogin');
+  const navGetStarted = document.getElementById('navGetStarted');
+  
+  if (pageId === 'dashboard') {
+    if (navLogin) navLogin.style.display = 'none';
+    if (navGetStarted) navGetStarted.style.display = 'none';
+  } else {
+    if (navLogin) navLogin.style.display = '';
+    if (navGetStarted) navGetStarted.style.display = '';
   }
 }
 
