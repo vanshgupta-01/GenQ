@@ -52,12 +52,12 @@ html {
   --text-main: #F8FAF7;
   --text-muted: #94a3b8;
   --accent: #A7C4BC;
-  --glass-bg: rgba(30, 41, 59, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --glass-hover-bg: rgba(30, 41, 59, 0.25);
+  --glass-hover-bg: rgba(255, 255, 255, 0.08);
   --glass-inset: inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  --surface: #1e293b;
+  --surface: #202422;
 }
 
 body {
@@ -1038,11 +1038,7 @@ button, input, select, textarea {
 }
 
 .auth-card {
-  background: var(--surface);
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-inset), 0 8px 32px rgba(15, 23, 42, 0.2);
+  /* Using standard .glass-card background from HTML */
   width: 100%;
   max-width: 440px;
   padding: 40px;
@@ -1113,12 +1109,12 @@ button, input, select, textarea {
 .form-group textarea {
   width: 100%;
   padding: 14px 16px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px) saturate(130%);
-  -webkit-backdrop-filter: blur(12px) saturate(130%);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-inset);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
   color: var(--text-main);
   font-size: 0.95rem;
   transition: all 0.3s ease;
@@ -1154,9 +1150,11 @@ button, input, select, textarea {
 .form-group textarea:focus ~ label,
 .form-group textarea.has-value ~ label {
   transform: translateY(-28px) scale(0.85);
-  color: #fcd34d;
-  background: rgba(17, 24, 39, 0.9);
-  padding: 0 6px;
+  color: var(--accent);
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 6px;
+  padding: 2px 8px;
   left: 10px;
 }
 
