@@ -114,7 +114,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const y = e.clientY - rect.top;
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
-      });
+    });
+  }
+
+  // Cursor Ambient Glow
+  const cursorGlow = document.getElementById('cursorGlow');
+  if (cursorGlow) {
+    document.addEventListener('mousemove', (e) => {
+      cursorGlow.style.opacity = '1';
+      cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     });
   }
 
