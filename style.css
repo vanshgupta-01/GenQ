@@ -1613,39 +1613,72 @@ button, input, select, textarea {
 }
 
 .category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: var(--glass-bg);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 2px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: var(--glass-inset), var(--glass-shadow);
   padding: 24px 16px;
   text-align: center;
-  border-radius: 14px;
+  border-radius: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .category-card:hover {
   transform: translateY(-4px);
   background: var(--glass-hover-bg);
-  border-color: rgba(95, 141, 126, 0.2);
+  border-color: rgba(95, 141, 126, 0.3);
 }
 
 .category-card.selected {
   border-color: #5F8D7E;
-  background: rgba(95, 141, 126, 0.06);
-  box-shadow: 0 0 20px rgba(95, 141, 126, 0.1);
+  background: rgba(95, 141, 126, 0.1);
+  box-shadow: 0 0 24px rgba(95, 141, 126, 0.15);
+}
+
+.category-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-card:hover .category-icon-wrapper,
+.category-card.selected .category-icon-wrapper {
+  background: rgba(95, 141, 126, 0.15);
+  border-color: rgba(95, 141, 126, 0.5);
+  box-shadow: 0 0 20px rgba(95, 141, 126, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
 }
 
 .category-icon {
-  font-size: 2rem;
-  margin-bottom: 8px;
+  font-size: 1.5rem;
+  line-height: 1;
 }
 
 .category-name {
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.category-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 /* Image Upload / Dropzone */
