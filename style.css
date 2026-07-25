@@ -1456,10 +1456,34 @@ button, input, select, textarea {
   transition: color 0.3s ease;
   background: none;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes shakeBell {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  50% { transform: rotate(-15deg); }
+  75% { transform: rotate(10deg); }
+}
+
+@keyframes pulseBadge {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(248, 113, 113, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(248, 113, 113, 0); }
 }
 
 .notification-bell:hover {
   color: var(--text-main);
+}
+
+.notification-bell:hover .bell-icon {
+  animation: shakeBell 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.notification-bell:hover .notification-badge {
+  animation: pulseBadge 1.5s infinite;
 }
 
 .notification-badge {
@@ -1476,13 +1500,19 @@ button, input, select, textarea {
   justify-content: center;
   color: white;
   font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.user-profile-wrapper {
+  position: relative;
 }
 
 .user-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #5F8D7E, #5F8D7E);
+  background: linear-gradient(135deg, #2dd4bf, #14b8a6);
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1490,11 +1520,75 @@ button, input, select, textarea {
   font-size: 0.9rem;
   color: white;
   cursor: pointer;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.user-avatar:hover {
-  box-shadow: 0 0 15px rgba(95, 141, 126, 0.4);
+.user-avatar:hover, .user-profile-wrapper:hover .user-avatar {
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.6);
+  transform: scale(1.05);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 180px;
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--glass-shadow);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-wrapper:hover .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--glass-hover-bg);
+  color: #14b8a6;
+}
+
+.dropdown-item svg {
+  opacity: 0.7;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: 6px 0;
+  opacity: 0.5;
+}
+
+.dropdown-item.text-danger {
+  color: #f87171;
+}
+
+.dropdown-item.text-danger:hover {
+  background: rgba(248, 113, 113, 0.1);
+  color: #ef4444;
 }
 
 /* Dashboard Stat Cards */

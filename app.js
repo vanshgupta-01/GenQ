@@ -1045,7 +1045,7 @@ function initDashboard() {
   }
 
   // Logout button
-  document.querySelectorAll('.logout-btn, [data-action="logout"], #logoutBtn').forEach((btn) => {
+  document.querySelectorAll('.logout-btn, [data-action="logout"], #logoutBtn, #dropdownLogout').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       handleLogout();
