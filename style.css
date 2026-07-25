@@ -104,9 +104,9 @@ body::after {
   position: fixed;
   top: 0;
   left: 0;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(45, 212, 191, 0.12) 0%, rgba(20, 184, 166, 0) 60%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 50%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -118,7 +118,7 @@ body::after {
 }
 
 [data-theme="dark"] .cursor-glow {
-  background: radial-gradient(circle, rgba(45, 212, 191, 0.15) 0%, rgba(20, 184, 166, 0) 60%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 50%);
 }
 
 .ambient-blob {
