@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // If on dashboard, redirect to auth
         if (AppState.currentPage === 'dashboard') {
-          showPage('auth');
+          showPage('auth-page');
         }
       }
     });
@@ -2200,9 +2200,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    // Check for existing session
+    // Handle initial hash FIRST so we don't overwrite it
+    const initialHash = window.location.hash.replace('#', '');
     const existingUser = sessionStorage.getItem('genq_user');
-    if (existingUser) {
+    
+    if (initialHash === 'dashboard' && !existingUser) {
+      showPage('auth-page');
+    } else if (initialHash && document.getElementById(initialHash)) {
+      showPage(initialHash);
+      if (initialHash === 'dashboard') initDashboardUI();
+    } else if (existingUser) {
       showPage('dashboard');
       initDashboardUI();
     } else {
@@ -2218,12 +2225,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Popstate handler for browser back/forward
     window.addEventListener('popstate', handlePopState);
-
-    // Handle initial hash
-    const hash = window.location.hash.replace('#', '');
-    if (hash && document.getElementById(hash)) {
-      showPage(hash);
-    }
 
     console.log('%c🏙️ GenQ — Civic Issue Reporting Platform', 'color: #6366f1; font-size: 16px; font-weight: bold;');
     console.log('%cApp initialized successfully.', 'color: #22d3ee;');
