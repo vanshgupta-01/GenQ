@@ -152,23 +152,28 @@ document.addEventListener('DOMContentLoaded', () => {
         startReportsListener(user.uid);
         
         // If on auth page, redirect to dashboard
-        if (AppState.currentPage === 'auth') {
+        if (AppState.currentPage === 'auth-page') {
           showPage('dashboard');
           initDashboardUI();
         }
       } else {
         console.log("User is signed out");
-        sessionStorage.removeItem('genq_user');
         
-        // Unsubscribe from reports if logging out
-        if (AppState.reportsUnsubscribe) {
-          AppState.reportsUnsubscribe();
-          AppState.reportsUnsubscribe = null;
-        }
-        
-        // If on dashboard, redirect to auth
-        if (AppState.currentPage === 'dashboard') {
-          showPage('auth-page');
+        const currentUser = JSON.parse(sessionStorage.getItem('genq_user') || 'null');
+        // Do not wipe session if using Mock Login
+        if (!currentUser || currentUser.uid !== 'mock123') {
+          sessionStorage.removeItem('genq_user');
+          
+          // Unsubscribe from reports if logging out
+          if (AppState.reportsUnsubscribe) {
+            AppState.reportsUnsubscribe();
+            AppState.reportsUnsubscribe = null;
+          }
+          
+          // If on dashboard, redirect to auth
+          if (AppState.currentPage === 'dashboard') {
+            showPage('auth-page');
+          }
         }
       }
     });
@@ -2204,9 +2209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialHash = window.location.hash.replace('#', '');
     const existingUser = sessionStorage.getItem('genq_user');
     
-    if (initialHash === 'dashboard' && !existingUser) {
-      showPage('auth-page');
-    } else if (initialHash && document.getElementById(initialHash)) {
+    if (initialHash && document.getElementById(initialHash)) {
       showPage(initialHash);
       if (initialHash === 'dashboard') initDashboardUI();
     } else if (existingUser) {
