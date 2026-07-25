@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const y = e.clientY - rect.top;
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
+      });
     });
   }
 
