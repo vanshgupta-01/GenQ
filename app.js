@@ -2189,6 +2189,94 @@ function initProfile() {
     };
   }
 }
+}
+
+
+// ─── Rewards & Gamification ─────────────────────────────────
+
+function initRewards() {
+  const tabs = document.querySelectorAll('.reward-tab-btn');
+  const contents = document.querySelectorAll('.reward-tab-content');
+
+  // Inner Tab Switching
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Add active to clicked
+      tab.classList.add('active');
+      const targetId = `reward-tab-${tab.getAttribute('data-reward-tab')}`;
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
+
+  // Confetti Simulation
+  const simulateBtn = document.getElementById('btnSimulateLevelUp');
+  if (simulateBtn) {
+    simulateBtn.addEventListener('click', () => {
+      triggerConfetti();
+      showToast('Level Up! You are now an Ambassador.', 'success');
+      
+      // Animate XP Bar full
+      const xpBar = document.querySelector('.xp-bar-fill');
+      if (xpBar) {
+        xpBar.style.width = '100%';
+        setTimeout(() => {
+          xpBar.style.width = '0%';
+          setTimeout(() => xpBar.style.width = '20%', 500); // Reset for new level
+        }, 1500);
+      }
+    });
+  }
+}
+
+// Lightweight DOM-based Confetti
+function triggerConfetti() {
+  const duration = 2000;
+  const end = Date.now() + duration;
+
+  const frame = () => {
+    // Generate 3 particles per frame
+    for(let i=0; i<3; i++) {
+        createConfettiParticle();
+    }
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  };
+  frame();
+}
+
+function createConfettiParticle() {
+  const particle = document.createElement('div');
+  const colors = ['#3B82F6', '#a855f7', '#34d399', '#f43f5e', '#fbbf24'];
+  particle.style.position = 'fixed';
+  particle.style.left = Math.random() * 100 + 'vw';
+  particle.style.top = '-10px';
+  particle.style.width = Math.random() * 10 + 5 + 'px';
+  particle.style.height = Math.random() * 10 + 5 + 'px';
+  particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+  particle.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+  particle.style.zIndex = '9999';
+  particle.style.pointerEvents = 'none';
+  document.body.appendChild(particle);
+
+  const duration = Math.random() * 1000 + 1000;
+  const fallDistance = window.innerHeight + 100;
+  
+  particle.animate([
+    { transform: `translate3d(0, 0, 0) rotate(0deg)`, opacity: 1 },
+    { transform: `translate3d(${Math.random() * 200 - 100}px, ${fallDistance}px, 0) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+  ], {
+    duration: duration,
+    easing: 'cubic-bezier(.25,.46,.45,.94)'
+  }).onfinish = () => particle.remove();
+}
 
 
 // ─── Logout ─────────────────────────────────────────────────
@@ -2234,6 +2322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticleBackground();
     initAuth();
     initDashboard();
+    initRewards();
 
     // Community Feed interactions
     const communityFeed = document.getElementById('communityFeed');

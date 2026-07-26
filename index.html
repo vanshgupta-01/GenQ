@@ -452,6 +452,12 @@
                             <span>Community</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="#" data-section="rewards" id="sideRewards">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                            <span style="display:flex; justify-content:space-between; width:100%;">Rewards <span style="background:rgba(59, 130, 246, 0.2); color:#3B82F6; padding: 2px 6px; border-radius:10px; font-size:0.7rem; font-weight:700;">NEW</span></span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
@@ -1082,6 +1088,203 @@
                             <input type="tel" id="profileEditPhone" class="manual-input" placeholder="+91 XXXXX XXXXX">
                         </div>
                         <button class="btn-next" id="saveProfile">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+            <!-- ===== REWARDS & RECOGNITION ===== -->
+            <div class="dashboard-content" id="content-rewards" style="display:none;">
+                <div class="rewards-container">
+                    <div class="reports-header" style="margin-bottom: 24px;">
+                        <div>
+                            <h3 class="content-title">Rewards & Recognition</h3>
+                            <p class="content-subtitle">Earn points, level up, and get rewarded for your civic engagement.</p>
+                        </div>
+                        <button class="btn-primary" id="btnSimulateLevelUp">Simulate Level Up 🎉</button>
+                    </div>
+
+                    <!-- Top Stats Row -->
+                    <div class="rewards-stats-grid">
+                        <div class="reward-stat-card glass-card">
+                            <span class="stat-label">Total GQ Points</span>
+                            <span class="stat-value text-electric" id="rewardPoints">2,450</span>
+                        </div>
+                        <div class="reward-stat-card glass-card level-card">
+                            <div class="level-header">
+                                <div>
+                                    <span class="stat-label">Current Level</span>
+                                    <span class="stat-value">🟣 Champion</span>
+                                </div>
+                                <div class="level-next">Next: 🟨 Ambassador</div>
+                            </div>
+                            <div class="xp-bar-container">
+                                <div class="xp-bar-fill" style="width: 70%;"></div>
+                            </div>
+                            <span class="xp-text">700 / 1000 XP</span>
+                        </div>
+                        <div class="reward-stat-card glass-card">
+                            <span class="stat-label">Total Badges</span>
+                            <span class="stat-value text-electric">8</span>
+                        </div>
+                    </div>
+
+                    <!-- Inner Tabs -->
+                    <div class="rewards-tabs">
+                        <button class="reward-tab-btn active" data-reward-tab="overview">Ways to Earn</button>
+                        <button class="reward-tab-btn" data-reward-tab="badges">Badges</button>
+                        <button class="reward-tab-btn" data-reward-tab="leaderboard">Leaderboard</button>
+                        <button class="reward-tab-btn" data-reward-tab="redeem">Redeem Store</button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="reward-tab-content active" id="reward-tab-overview">
+                        <div class="earn-grid">
+                            <div class="earn-card glass-card">
+                                <div class="earn-icon" style="color: #34d399;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                </div>
+                                <div class="earn-info">
+                                    <h4>Verified Complaint</h4>
+                                    <p>Submit an issue that gets verified by authorities.</p>
+                                </div>
+                                <div class="earn-points">+100 GQ</div>
+                            </div>
+                            <div class="earn-card glass-card">
+                                <div class="earn-icon" style="color: #3B82F6;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                </div>
+                                <div class="earn-info">
+                                    <h4>Supporting Evidence</h4>
+                                    <p>Upload clear photos with your report.</p>
+                                </div>
+                                <div class="earn-points">+40 GQ</div>
+                            </div>
+                            <div class="earn-card glass-card">
+                                <div class="earn-icon" style="color: #f43f5e;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                </div>
+                                <div class="earn-info">
+                                    <h4>Service Feedback</h4>
+                                    <p>Rate the resolution of your closed reports.</p>
+                                </div>
+                                <div class="earn-points">+20 GQ</div>
+                            </div>
+                            <div class="earn-card glass-card">
+                                <div class="earn-icon" style="color: #eab308;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                                </div>
+                                <div class="earn-info">
+                                    <h4>Refer a Citizen</h4>
+                                    <p>Invite friends who verify their accounts.</p>
+                                </div>
+                                <div class="earn-points">+150 GQ</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reward-tab-content" id="reward-tab-badges">
+                        <div class="badges-grid">
+                            <div class="badge-card glass-card unlocked">
+                                <div class="badge-icon-wrap" style="background: rgba(59, 130, 246, 0.2); color: #3B82F6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15l-2 5l9-5z"/><circle cx="12" cy="8" r="6"/></svg>
+                                </div>
+                                <h4>First Step</h4>
+                                <p>Reported your first issue.</p>
+                            </div>
+                            <div class="badge-card glass-card unlocked">
+                                <div class="badge-icon-wrap" style="background: rgba(52, 211, 153, 0.2); color: #34d399; box-shadow: 0 0 15px rgba(52, 211, 153, 0.4);">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                                <h4>Active Citizen</h4>
+                                <p>5 verified reports.</p>
+                            </div>
+                            <div class="badge-card glass-card locked">
+                                <div class="badge-icon-wrap">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                </div>
+                                <h4>Governance Hero</h4>
+                                <p>Reach Ambassador level.</p>
+                                <span class="lock-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                            </div>
+                            <div class="badge-card glass-card locked">
+                                <div class="badge-icon-wrap">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                                <h4>Top Contributor</h4>
+                                <p>Rank in top 10 this month.</p>
+                                <span class="lock-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reward-tab-content" id="reward-tab-leaderboard">
+                        <div class="leaderboard-card glass-card">
+                            <div class="leaderboard-filters">
+                                <button class="filter-btn active">City (Bangalore)</button>
+                                <button class="filter-btn">Global</button>
+                                <button class="filter-btn">This Month</button>
+                            </div>
+                            <div class="leaderboard-list">
+                                <div class="lb-item">
+                                    <div class="lb-rank">1</div>
+                                    <div class="lb-avatar" style="background: #3B82F6;">R</div>
+                                    <div class="lb-info">
+                                        <h4>Rahul Verma</h4>
+                                        <span>💎 Legend</span>
+                                    </div>
+                                    <div class="lb-points">12,450 GQ</div>
+                                </div>
+                                <div class="lb-item">
+                                    <div class="lb-rank">2</div>
+                                    <div class="lb-avatar" style="background: #f43f5e;">P</div>
+                                    <div class="lb-info">
+                                        <h4>Priya Sharma</h4>
+                                        <span>🟨 Ambassador</span>
+                                    </div>
+                                    <div class="lb-points">9,120 GQ</div>
+                                </div>
+                                <div class="lb-item highlight">
+                                    <div class="lb-rank">3</div>
+                                    <div class="lb-avatar" style="background: #a855f7;">Y</div>
+                                    <div class="lb-info">
+                                        <h4>You (Amit)</h4>
+                                        <span>🟣 Champion</span>
+                                    </div>
+                                    <div class="lb-points text-electric">2,450 GQ</div>
+                                </div>
+                                <div class="lb-item">
+                                    <div class="lb-rank">4</div>
+                                    <div class="lb-avatar" style="background: #eab308;">S</div>
+                                    <div class="lb-info">
+                                        <h4>Suresh K.</h4>
+                                        <span>🟣 Champion</span>
+                                    </div>
+                                    <div class="lb-points">2,100 GQ</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reward-tab-content" id="reward-tab-redeem">
+                        <div class="redeem-grid">
+                            <div class="redeem-card glass-card">
+                                <div class="redeem-img" style="background: linear-gradient(135deg, #1e293b, #0f172a);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+                                <h4>Digital Certificate</h4>
+                                <p>Official Civic Contributor certificate by City Corp.</p>
+                                <button class="btn-redeem">1,000 GQ</button>
+                            </div>
+                            <div class="redeem-card glass-card">
+                                <div class="redeem-img" style="background: linear-gradient(135deg, #1e293b, #0f172a);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                                <h4>Priority Token</h4>
+                                <p>Get your next issue verified faster by officials.</p>
+                                <button class="btn-redeem">2,500 GQ</button>
+                            </div>
+                            <div class="redeem-card glass-card">
+                                <div class="redeem-img" style="background: linear-gradient(135deg, #1e293b, #0f172a);"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+                                <h4>Townhall Invite</h4>
+                                <p>Exclusive invite to the Mayor's virtual townhall.</p>
+                                <button class="btn-redeem disabled" disabled>5,000 GQ</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
