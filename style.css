@@ -2411,16 +2411,16 @@ button, input, select, textarea {
 
 .feed-header {
   position: sticky;
-  top: 0;
-  z-index: 10;
+  top: 85px;
+  z-index: 50;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .feed-header h3 {
