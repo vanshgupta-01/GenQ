@@ -2189,7 +2189,6 @@ function initProfile() {
     };
   }
 }
-}
 
 
 // ─── Rewards & Gamification ─────────────────────────────────
