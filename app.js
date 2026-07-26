@@ -2239,30 +2239,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const communityFeed = document.getElementById('communityFeed');
     if (communityFeed) {
       communityFeed.addEventListener('click', (e) => {
-        const upvoteBtn = e.target.closest('.upvote-btn');
-        if (upvoteBtn) {
-          const countSpan = upvoteBtn.querySelector('.upvote-count');
+        const likeBtn = e.target.closest('.action-like');
+        if (likeBtn) {
+          const countSpan = likeBtn.querySelector('.like-count');
           if (!countSpan) return;
           let count = parseInt(countSpan.textContent, 10);
           
-          if (upvoteBtn.classList.contains('upvoted')) {
-            upvoteBtn.classList.remove('upvoted');
+          if (likeBtn.classList.contains('liked')) {
+            likeBtn.classList.remove('liked');
             countSpan.textContent = count - 1;
+            likeBtn.querySelector('svg').style.fill = 'none';
           } else {
-            upvoteBtn.classList.add('upvoted');
+            likeBtn.classList.add('liked');
             countSpan.textContent = count + 1;
+            likeBtn.querySelector('svg').style.fill = 'currentColor';
           }
           
-          // Small haptic animation on the icon
-          const svg = upvoteBtn.querySelector('svg');
-          if (svg) {
-            svg.style.transform = 'scale(1.2)';
-            setTimeout(() => svg.style.transform = '', 150);
+          // Small haptic animation on the icon bg
+          const iconBg = likeBtn.querySelector('.icon-bg');
+          if (iconBg) {
+            iconBg.style.transform = 'scale(1.2)';
+            setTimeout(() => iconBg.style.transform = '', 150);
           }
         }
       });
     }
 
+    // Community Composer Interaction
+    const communityComposerInput = document.querySelector('.composer-input');
+    if (communityComposerInput) {
+      communityComposerInput.addEventListener('click', () => {
+        // Find the "New Report" sidebar link and click it to trigger the standard transition
+        const newReportLink = document.querySelector('.sidebar-nav a[data-section="new-report"]');
+        if (newReportLink) {
+          newReportLink.click();
+        }
+      });
+    }
     // Popstate handler for browser back/forward
     window.addEventListener('popstate', handlePopState);
 

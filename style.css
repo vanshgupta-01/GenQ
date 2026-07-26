@@ -2386,56 +2386,196 @@ button, input, select, textarea {
 /* ============================================================
    10. Community Feed
    ============================================================ */
-.community-container {
-  width: 100%;
-  max-width: 800px;
+.community-layout {
+  display: flex;
+  gap: 32px;
+  max-width: 1000px;
   margin: 0 auto;
+  align-items: flex-start;
 }
 
-.community-feed {
+/* Feed Column */
+.feed-column {
+  flex: 1;
+  min-width: 0; /* prevents flex blowout */
+  background: var(--surface);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inset), 0 24px 48px rgba(15, 23, 42, 0.15);
+  border-radius: 20px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
-.community-post {
-  padding: 24px;
-}
-
-.post-header {
+.feed-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 16px;
-}
-
-.post-user-info {
-  display: flex;
   align-items: center;
-  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.post-avatar {
-  width: 40px;
-  height: 40px;
+.feed-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.header-icon {
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+/* Composer */
+.feed-composer {
+  display: flex;
+  padding: 24px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0; /* Override glass-card */
+  box-shadow: none;
+  background: transparent;
+}
+
+.composer-left .post-avatar {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
-.post-meta h4 {
-  margin: 0;
-  font-size: 1rem;
+.composer-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.composer-input {
+  background: transparent;
+  border: none;
   color: var(--text-main);
+  font-size: 1.1rem;
+  padding: 12px 0;
+  outline: none;
+  cursor: pointer;
 }
 
-.post-meta span {
-  font-size: 0.8rem;
+.composer-input::placeholder {
   color: var(--text-muted);
+}
+
+.composer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.composer-tools {
+  display: flex;
+  gap: 12px;
+}
+
+.tool-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 300ms cubic-bezier(.22,.61,.36,1);
+}
+
+.tool-btn:hover {
+  background: rgba(45, 212, 191, 0.1);
+}
+
+.composer-submit {
+  padding: 8px 24px;
+  font-size: 0.95rem;
+  border-radius: 20px;
+}
+
+/* Tweet Post */
+.tweet-post {
+  display: flex;
+  padding: 24px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  transition: background 300ms cubic-bezier(.22,.61,.36,1);
+}
+
+.tweet-post:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.post-left .post-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.post-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-header-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.post-name {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1rem;
+}
+
+.post-handle, .post-dot, .post-time {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.post-content p {
+  color: var(--text-main);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.post-tags {
+  display: flex;
+  margin-bottom: 16px;
 }
 
 .post-category {
@@ -2448,19 +2588,12 @@ button, input, select, textarea {
   font-weight: 600;
 }
 
-.post-body p {
-  color: var(--text-main);
-  line-height: 1.6;
-  margin-bottom: 16px;
-  font-size: 0.95rem;
-}
-
 .post-image-placeholder {
   width: 100%;
-  height: 200px;
+  height: 250px;
   background: rgba(255,255,255,0.03);
-  border: 1px dashed rgba(255,255,255,0.1);
-  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2468,14 +2601,15 @@ button, input, select, textarea {
   margin-bottom: 16px;
 }
 
-.post-footer {
+/* Post Actions (Twitter Style) */
+.post-actions {
   display: flex;
-  gap: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 16px;
+  justify-content: space-between;
+  max-width: 425px;
+  margin-top: 8px;
 }
 
-.post-action-btn {
+.action-btn {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -2483,45 +2617,183 @@ button, input, select, textarea {
   border: none;
   color: var(--text-muted);
   cursor: pointer;
-  font-size: 0.9rem;
-  padding: 8px 12px;
-  border-radius: 8px;
-  transition: all 300ms cubic-bezier(.22,.61,.36,1);
+  font-size: 0.85rem;
+  padding: 0;
+  transition: color 300ms cubic-bezier(.22,.61,.36,1);
 }
 
-.post-action-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-main);
+.icon-bg {
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 300ms cubic-bezier(.22,.61,.36,1);
 }
 
-.post-action-btn.upvoted {
-  color: #a855f7;
-}
+/* Hover Colors */
+.action-reply:hover { color: #3b82f6; }
+.action-reply:hover .icon-bg { background: rgba(59, 130, 246, 0.1); }
 
-.post-action-btn.upvoted svg {
-  fill: #a855f7;
+.action-repost:hover { color: #10b981; }
+.action-repost:hover .icon-bg { background: rgba(16, 185, 129, 0.1); }
+
+.action-like:hover { color: #f43f5e; }
+.action-like:hover .icon-bg { background: rgba(244, 63, 94, 0.1); }
+
+.action-share:hover { color: #3b82f6; }
+.action-share:hover .icon-bg { background: rgba(59, 130, 246, 0.1); }
+
+/* Active Like State */
+.action-like.liked {
+  color: #f43f5e;
+}
+.action-like.liked svg {
+  fill: #f43f5e;
 }
 
 .load-more-container {
   display: flex;
   justify-content: center;
-  margin-top: 16px;
-  margin-bottom: 40px;
+  padding: 24px;
 }
 
-.load-more-btn {
+/* Right Sidebar */
+.sidebar-column {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.twitter-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: rgba(255, 255, 255, 0.05);
-  color: var(--text-main);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 300ms cubic-bezier(.22,.61,.36,1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  padding: 12px 20px;
+  color: var(--text-muted);
 }
 
-.load-more-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+.twitter-search input {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.95rem;
+  width: 100%;
+  outline: none;
+}
+
+.trending-box, .follow-box {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--surface);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-inset), 0 8px 16px rgba(15, 23, 42, 0.1);
+}
+
+.trending-box h3, .follow-box h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.trending-item {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.trending-item:hover h4 {
+  color: #22d3ee;
+}
+
+.trend-category, .trend-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.trending-item h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  transition: color 300ms ease;
+}
+
+.follow-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.follow-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.follow-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.follow-info h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.follow-info span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.btn-follow {
+  background: white;
+  color: black;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 300ms ease;
+}
+
+.btn-follow:hover {
+  background: #e2e8f0;
+}
+
+.show-more-btn {
+  background: transparent;
+  border: none;
+  color: #3b82f6;
+  padding: 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.show-more-btn:hover {
+  text-decoration: underline;
 }
 
 /* Reports Grid */
