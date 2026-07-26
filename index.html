@@ -446,6 +446,12 @@
                             <span>Profile</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="#" data-section="community" id="sideCommunity">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <span>Community</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
@@ -747,8 +753,97 @@
                 </div>
             </div>
 
+            <!-- ===== COMMUNITY ===== -->
+            <div class="dashboard-content" id="content-community" style="display:none;">
+                <div class="community-container">
+                    <div class="reports-header">
+                        <div>
+                            <h3 class="content-title">Community Feed</h3>
+                            <p class="content-subtitle">See and support civic issues reported by your neighbors</p>
+                        </div>
+                    </div>
+                    
+                    <div class="community-feed" id="communityFeed">
+                        <!-- Post 1 -->
+                        <div class="community-post glass-card">
+                            <div class="post-header">
+                                <div class="post-user-info">
+                                    <div class="post-avatar" style="background: linear-gradient(135deg, #a855f7, #6366f1);">A</div>
+                                    <div class="post-meta">
+                                        <h4>Amit Kumar</h4>
+                                        <span>2 hours ago • South Delhi</span>
+                                    </div>
+                                </div>
+                                <div class="post-category" style="color: #A5F3E4; border: 1px solid rgba(165,243,228,0.2); background: rgba(165,243,228,0.1);">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                                    Pothole
+                                </div>
+                            </div>
+                            <div class="post-body">
+                                <p>Massive pothole on MG Road near the metro station. It's causing huge traffic jams during peak hours and is dangerous for two-wheelers.</p>
+                                <div class="post-image-placeholder">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                </div>
+                            </div>
+                            <div class="post-footer">
+                                <button class="post-action-btn upvote-btn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+                                    <span class="upvote-count">124</span>
+                                </button>
+                                <button class="post-action-btn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>24 Comments</span>
+                                </button>
+                                <button class="post-action-btn share-btn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                    <span>Share</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Post 2 -->
+                        <div class="community-post glass-card">
+                            <div class="post-header">
+                                <div class="post-user-info">
+                                    <div class="post-avatar" style="background: linear-gradient(135deg, #f43f5e, #fb923c);">S</div>
+                                    <div class="post-meta">
+                                        <h4>Sneha Patel</h4>
+                                        <span>5 hours ago • Bandra West</span>
+                                    </div>
+                                </div>
+                                <div class="post-category" style="color: #FFF3D6; border: 1px solid rgba(255,243,214,0.2); background: rgba(255,243,214,0.1);">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.8 11.2c.8-.9 1.2-2 1.2-3.2a6 6 0 0 0-9.3-5"/><path d="m2 2 20 20"/><path d="M6.3 6.3a6 6 0 0 0 1.6 9.1L9 16.3c.4.3.9.7 1.1 1.2.2.5.4 1.1.4 1.7v1.8h3v-2.1"/><path d="M10 22h4"/></svg>
+                                    Streetlight
+                                </div>
+                            </div>
+                            <div class="post-body">
+                                <p>Three streetlights have been completely off for the last week on Hill Road. It gets completely dark by 7 PM, making it unsafe for pedestrians.</p>
+                            </div>
+                            <div class="post-footer">
+                                <button class="post-action-btn upvote-btn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+                                    <span class="upvote-count">89</span>
+                                </button>
+                                <button class="post-action-btn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                    <span>12 Comments</span>
+                                </button>
+                                <button class="post-action-btn share-btn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                    <span>Share</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="load-more-container">
+                            <button class="btn-secondary load-more-btn">Load More Reports</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- ===== MY REPORTS ===== -->
-            <div class="dashboard-content" id="content-my-reports">
+            <div class="dashboard-content" id="content-my-reports" style="display:none;">
                 <div class="reports-container">
                     <div class="reports-header">
                         <div>

@@ -2383,6 +2383,147 @@ button, input, select, textarea {
   border-color: #36454F;
 }
 
+/* ============================================================
+   10. Community Feed
+   ============================================================ */
+.community-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.community-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.community-post {
+  padding: 24px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.post-user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.post-meta h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.post-meta span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.post-category {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.post-body p {
+  color: var(--text-main);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.post-image-placeholder {
+  width: 100%;
+  height: 200px;
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed rgba(255,255,255,0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.post-footer {
+  display: flex;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 16px;
+}
+
+.post-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 300ms cubic-bezier(.22,.61,.36,1);
+}
+
+.post-action-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+.post-action-btn.upvoted {
+  color: #a855f7;
+}
+
+.post-action-btn.upvoted svg {
+  fill: #a855f7;
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.load-more-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(.22,.61,.36,1);
+}
+
+.load-more-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 /* Reports Grid */
 .reports-grid {
   display: grid;

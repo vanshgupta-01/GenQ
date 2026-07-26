@@ -2235,6 +2235,34 @@ document.addEventListener('DOMContentLoaded', () => {
     initAuth();
     initDashboard();
 
+    // Community Feed interactions
+    const communityFeed = document.getElementById('communityFeed');
+    if (communityFeed) {
+      communityFeed.addEventListener('click', (e) => {
+        const upvoteBtn = e.target.closest('.upvote-btn');
+        if (upvoteBtn) {
+          const countSpan = upvoteBtn.querySelector('.upvote-count');
+          if (!countSpan) return;
+          let count = parseInt(countSpan.textContent, 10);
+          
+          if (upvoteBtn.classList.contains('upvoted')) {
+            upvoteBtn.classList.remove('upvoted');
+            countSpan.textContent = count - 1;
+          } else {
+            upvoteBtn.classList.add('upvoted');
+            countSpan.textContent = count + 1;
+          }
+          
+          // Small haptic animation on the icon
+          const svg = upvoteBtn.querySelector('svg');
+          if (svg) {
+            svg.style.transform = 'scale(1.2)';
+            setTimeout(() => svg.style.transform = '', 150);
+          }
+        }
+      });
+    }
+
     // Popstate handler for browser back/forward
     window.addEventListener('popstate', handlePopState);
 
